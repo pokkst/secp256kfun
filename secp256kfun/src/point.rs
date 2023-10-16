@@ -493,7 +493,7 @@ crate::impl_display_serialize! {
 crate::impl_fromstr_deserialize! {
     name => "secp256k1 32-byte x-coordinate",
     fn from_bytes<S>(bytes: [u8;32]) -> Option<Point<EvenY,S, NonZero>> {
-        Point::from_xonly_bytes(bytes).map(|p| p.set_secrecy::<S>())
+        Point::from_xonly_bytes(bytes).map(|p: Point<EvenY, S>| p.set_secrecy::<S>())
     }
 }
 
